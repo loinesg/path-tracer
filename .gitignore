@@ -1,0 +1,24 @@
+#Qt Project Files
+*.pro
+*moc_*.cpp
+*moc_*.h
+*qt_*.mak
+*.pbxproj
+.qmake*
+
+#Makefile files
+Makefile
+Makefile.Debug
+Makefile.Release
+
+# Build Results
+*.o
+*.app/
+pathtracer
+
+# Mac
+*.xcodeproj/*
+xcshareddata/
+*.pbxproj
+Info.plist
+*.build/
