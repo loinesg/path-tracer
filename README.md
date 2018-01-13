@@ -5,6 +5,8 @@ This application implements a pathtracer that renders a cornell box with
 a shadowed area light, reflections and indirect lighting. I completed this
 project for an individual coursework submission during my masters degree.
 
+![screenshot of the application](screenshot-top.png?raw=true)
+
 # Main Features
 - Moveable camera and Qt GUI
 - Toggle direct light, impulse light, indirect light and shadows on and off
