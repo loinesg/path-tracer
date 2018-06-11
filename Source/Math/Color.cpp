@@ -74,6 +74,43 @@ Color Color::operator- (Color c) const
     return Color(r - c.r, g - c.g, b - c.b);
 }
 
+float Color::gammaToLinear(float srgb)
+{
+    return srgb < 0.04045f ? srgb / 12.92f : powf((srgb + 0.055f) / 1.055f, 2.4f);
+}
+
+float Color::linearToGamma(float linear)
+{
+    return linear < 0.0031308f ? linear * 12.92f : 1.055f * powf(linear, 1.0f / 2.4f) - 0.055f;
+}
+
+Color Color::gammaToLinear(float r, float g, float b)
+{
+    return gammaToLinear(Color(r, g, b));
+}
+
+Color Color::gammaToLinear(const Color& color)
+{
+    Color c;
+    c.r = gammaToLinear(color.r);
+    c.g = gammaToLinear(color.g);
+    c.b = gammaToLinear(color.b);
+    return c;
+}
+
+Color Color::linearToGamma(float r, float g, float b)
+{
+    return linearToGamma(Color(r, g, b));
+}
+
+Color Color::linearToGamma(const Color& color)
+{
+    Color c;
+    c.r = linearToGamma(color.r);
+    c.g = linearToGamma(color.g);
+    c.b = linearToGamma(color.b);
+    return c;
+}
 Color operator * (const Color &color, float scalar)
 {
     return Color(color.r * scalar, color.g * scalar, color.b * scalar);
