@@ -75,7 +75,7 @@ void RendererWidget::paintGL()
 {
     // Load the computed image into an opengl texture
     glBindTexture(GL_TEXTURE_2D, targetGPUTexture_);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, targetBitmap_.width(), targetBitmap_.height(), 0, GL_RGB, GL_FLOAT, targetBitmap_.buffer());
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, targetBitmap_.width(), targetBitmap_.height(), 0, GL_RGB, GL_FLOAT, targetBitmap_.srgbConvert());
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     

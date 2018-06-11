@@ -14,7 +14,10 @@ public:
     
     int width() const { return width_; }
     int height() const { return height_; }
-    const Color* buffer() const { return pixels_; }
+    const Color* buffer() { return pixels_; }
+    
+    // Returns a version of the bitmap encoded as srgb values
+    const Color* srgbConvert() const;
     
     // Resizes and clears the image
     void resize(int width, int height);
@@ -29,6 +32,7 @@ private:
     int width_;
     int height_;
     Color* pixels_;
+    Color* pixelsSRGB_;
     Color* sampleSums_;
     int* sampleCounts_;
 };

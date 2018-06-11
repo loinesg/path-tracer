@@ -4,6 +4,7 @@ Bitmap::Bitmap()
     : width_(0),
     height_(0),
     pixels_(nullptr),
+    pixelsSRGB_(nullptr),
     sampleSums_(nullptr),
     sampleCounts_(nullptr)
 {
@@ -13,8 +14,21 @@ Bitmap::Bitmap()
 Bitmap::~Bitmap()
 {
     delete[] pixels_;
+    delete[] pixelsSRGB_;
     delete[] sampleSums_;
     delete[] sampleCounts_;
+}
+
+const Color* Bitmap::srgbConvert() const
+{
+    // Update the srgb color buffer
+    for(int i = 0; i < width_ * height_; ++i)
+    {
+        pixelsSRGB_[i] = Color::linearToGamma(pixels_[i]);
+    }
+    
+    // Return the srgb version
+    return pixelsSRGB_;
 }
 
 void Bitmap::resize(int width, int height)
@@ -23,12 +37,14 @@ void Bitmap::resize(int width, int height)
     if(pixels_ != nullptr)
     {
         delete[] pixels_;
+        delete[] pixelsSRGB_;
         delete[] sampleSums_;
         delete[] sampleCounts_;
     }
     
     // Allocate new buffers of the correct size.
     pixels_ = new Color[width * height];
+    pixelsSRGB_ = new Color[width * height];
     sampleSums_ = new Color[width * height];
     sampleCounts_ = new int[width * height];
     
