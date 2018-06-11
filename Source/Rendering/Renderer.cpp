@@ -112,7 +112,8 @@ Color Renderer::pathTrace(const Ray &viewRay, int bounce) const
     const SurfaceHit hit = testRay(viewRay);
     if(hit.distance == INFINITY)
     {
-        return Color::black();
+        // Make the sky color range from light blue to dark blue
+        return Color::lerp(Color::white(), Color::skyBlue(), viewRay.direction().y * 0.5f + 0.5f);
     }
     
     // Handle hit information overlays

@@ -23,6 +23,7 @@ struct Color
     static Color red();
     static Color green();
     static Color blue();
+    static Color skyBlue();
     
     Color& operator+=(const Color &other);
     

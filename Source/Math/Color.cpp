@@ -51,6 +51,11 @@ Color Color::blue()
     return Color(0.0f, 0.0f, 1.0f);
 }
 
+Color Color::skyBlue()
+{
+    return Color(0.5f, 0.7f, 1.0f);
+}
+
 Color& Color::operator+=(const Color &other)
 {
     r += other.r;
