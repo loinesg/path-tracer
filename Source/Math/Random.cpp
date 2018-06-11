@@ -5,7 +5,7 @@
 
 float random_float()
 {
-    return rand() / (float)RAND_MAX;
+    return drand48();
 }
 
 float random_float(float min, float max)
