@@ -44,6 +44,8 @@ struct Color
     static Color linearToGamma(float r, float g, float b);
     static Color linearToGamma(const Color& color);
     
+    // Performs linear interpolation from a to b
+    static Color lerp(const Color &a, const Color &b, float t);
 };
 
 Color operator * (const Color &color, float scalar);

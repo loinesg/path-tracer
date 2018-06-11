@@ -111,6 +111,12 @@ Color Color::linearToGamma(const Color& color)
     c.b = linearToGamma(color.b);
     return c;
 }
+
+Color Color::lerp(const Color &a, const Color &b, float t)
+{
+    return a * (1.0f - t) + b * t;
+}
+
 Color operator * (const Color &color, float scalar)
 {
     return Color(color.r * scalar, color.g * scalar, color.b * scalar);
